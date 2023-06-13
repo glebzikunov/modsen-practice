@@ -1,5 +1,5 @@
-.SearchForm {
-  width: 40%;
+.search-form {
+  width: 650px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -8,18 +8,20 @@
 }
 
 .search-form-title {
+  font-family: copperplate;
+  font-weight: 500;
   color: #fff;
   font-size: 40px;
 }
 
 .input-wrapper {
   background-color: #fff;
-  width: 80%;
+  width: 520px;
   display: flex;
   align-items: center;
-  border-radius: 10px;
-  height: 2.2rem;
-  margin-top: 1.5rem;
+  border-radius: 17px;
+  height: 36px;
+  margin-top: 20px;
   padding: 0px 15px;
 }
 
@@ -28,7 +30,7 @@ input {
   border: none;
   height: 100%;
   width: 100%;
-  font-size: 1rem;
+  font-size: 16px;
   margin-left: 10px;
 }
 
@@ -48,21 +50,38 @@ input:focus {
 .sortings-wrapper {
   display: flex;
   width: 100%;
-  justify-content: space-between;
-  margin-top: 1rem;
+  justify-content: center;
+  margin-top: 20px;
 }
 
 .sortings {
-  width: 45%;
   display: flex;
   align-items: center;
+  justify-content: center;
+}
+
+.sortings:not(:last-child) {
+  margin-right: 30px;
 }
 
 label {
   color: #fff;
+  text-align: center;
+  font-size: 16px;
+  font-weight: 300;
+  font-family: copperplate;
+  white-space: nowrap;
 }
 
 select {
-  height: 100%;
-  width: 80%;
+  border: none;
+  margin-left: 10px;
+  padding: 0px 10px;
+  height: 36px;
+  width: 180px;
+  font-size: 18px;
+}
+
+select:focus {
+  outline: none;
 }
