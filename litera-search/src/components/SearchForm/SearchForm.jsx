@@ -1,5 +1,8 @@
 import React, {useState} from 'react'
 import { FaSearch } from 'react-icons/fa'
+import CategorySelect from '../CategoriesSelect/CategorySelect'
+import SortingSelect from '../SortingSelect/SortingSelect'
+import SearchBar from '../SearchBar/SearchBar'
 import './SearchForm.css'
 
 const SearchForm = () => {
@@ -20,36 +23,17 @@ const SearchForm = () => {
     { value: "newest", text: "Newest" },
   ];
 
+  const handleInputChange = (e) => {
+    setInput(e.target.value);
+  };
+
   return (
-    <form className='SearchForm'>
-      <h1 className='search-form-title'>Search for books</h1>
-      <div className='input-wrapper'>
-        <FaSearch id='search-icon'/>
-        <input 
-          type='text'
-          name='book-search'
-          placeholder='Type to search...'
-          value={input}
-          onChange={(e) => setInput(e.target.value)}
-        />
-      </div>
+    <form className='search-form'>
+      <h1 className='search-form-title'>Litera Search</h1>
+      <SearchBar value={input} onChange={handleInputChange} />
       <div className='sortings-wrapper'>
-        <div className='sortings'>
-          <label htmlFor='categories'>Categories</label>
-          <select id='categories'>
-            {categories.map((category) => (
-              <option key={category.value} value={category.value}>{category.text}</option>
-            ))}
-          </select>
-        </div>
-        <div className='sortings'>
-          <label htmlFor='sortings'>Sorting by</label>
-          <select id='sortings'>
-            {sortings.map((sort) => (
-              <option key={sort.value} value={sort.value}>{sort.text}</option>
-            ))}
-          </select>
-        </div>
+        <CategorySelect categories={categories} />
+        <SortingSelect sortings={sortings} />
       </div>
     </form>
   )
