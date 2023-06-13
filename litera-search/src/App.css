@@ -1,3 +1,7 @@
+.App {
+  overflow: hidden;
+}
+
 .App-header {
   background-image: url('./components/SearchForm/images/form-backgorund.png');
   background-size: cover;
@@ -8,4 +12,10 @@
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+@media (max-width: 599px) {
+  .App-header {
+    height: 280px;
+  }
 }
