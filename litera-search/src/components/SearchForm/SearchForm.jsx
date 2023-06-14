@@ -1,5 +1,4 @@
 import React, {useState} from 'react'
-import { FaSearch } from 'react-icons/fa'
 import CategorySelect from '../CategoriesSelect/CategorySelect'
 import SortingSelect from '../SortingSelect/SortingSelect'
 import SearchBar from '../SearchBar/SearchBar'

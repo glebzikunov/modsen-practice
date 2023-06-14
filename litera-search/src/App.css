@@ -1,5 +1,8 @@
 .App {
   overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 
 .App-header {
@@ -12,6 +15,16 @@
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.App-main {
+  width: 100%;
+  margin: 0 auto;
+  padding: 10px 20px 0px 20px;
+}
+
+.App-footer {
+  margin-top: auto;
 }
 
 @media (max-width: 599px) {
