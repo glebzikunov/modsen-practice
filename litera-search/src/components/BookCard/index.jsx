@@ -1,19 +1,21 @@
 import React from 'react'
 import './styles.css'
 
-const BookCard = () => {
+const BookCard = ({ bookCover, bookCategories, bookTitle, bookAuthors }) => {
+  const notFound = './src/assets/images/thumbnail-not-found.png'
+  
   return (
     <div className="book-card">
       <div className="book-card-wrapper">
         <div className="book-card-thumbnail">
           <a href="#">
-            <img src="src/assets/images/test-thumbnail.webp" alt="Book Cover" />
+            <img src={bookCover || notFound} alt="Book Cover" />
           </a>
         </div>
         <div className="book-card-info">
-          <h3 className="book-card-category">Computers</h3>
-          <h4 className="book-card-title">Node.js Разработка серверных веб-приложений на JavaScript</h4>
-          <p className="book-card-author">Дэвид Хэрон</p>
+          <h3 className="book-card-category">{bookCategories}</h3>
+          <h4 className="book-card-title">{bookTitle}</h4>
+          <p className="book-card-author">{bookAuthors}</p>
         </div>
       </div>
     </div>
