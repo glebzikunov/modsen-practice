@@ -1,9 +1,9 @@
 import React, {useState} from 'react'
+import SearchForm from "./components/SearchForm/index";
+import BooksSection from './components/BooksSection/index';
 import './App.css';
-import SearchForm from "./components/SearchForm/SearchForm";
-import BooksSection from './components/BooksSection/BooksSection';
 
-function App() {
+const App = () => {
   const [searchValue, setSearchValue] = useState('');
 
   const handleSearch = (value) => {

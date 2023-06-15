@@ -1,9 +1,8 @@
 import React, {useState} from 'react'
-import CategorySelect from '../CategoriesSelect/CategorySelect'
-import SortingSelect from '../SortingSelect/SortingSelect'
-import SearchBar from '../SearchBar/SearchBar'
+import FilterSelect from '../FilterSelect/index'
+import SearchBar from '../SearchBar/index'
 import BOOK_SEARCH_API_KEY from '../../apikey'
-import './SearchForm.css'
+import './styles.css'
 
 const SearchForm = ({onSearch}) => {
   const [input, setInput] = useState('');
@@ -51,8 +50,8 @@ const SearchForm = ({onSearch}) => {
       <h1 className='search-form-title'>Litera Search</h1>
       <SearchBar value={input} onChange= {(e) => handleInputChange(e.target.value)} />
       <div className='sortings-wrapper'>
-        <CategorySelect categories={categories} />
-        <SortingSelect sortings={sortings} />
+        <FilterSelect optionType={categories} label='Categories' />
+        <FilterSelect optionType={sortings} label='Sorting by' />
       </div>
     </form>
   )

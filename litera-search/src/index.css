@@ -1,6 +1,6 @@
 @font-face {
   font-family: copperplate;
-  src: url(/public/fonts/copperplate.otf);
+  src: url(/src/assets/fonts/copperplate.otf);
 }
 
 * {

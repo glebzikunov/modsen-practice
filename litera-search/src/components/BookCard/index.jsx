@@ -1,5 +1,5 @@
 import React from 'react'
-import './BookCard.css'
+import './styles.css'
 
 const BookCard = () => {
   return (
@@ -7,7 +7,7 @@ const BookCard = () => {
       <div className="book-card-wrapper">
         <div className="book-card-thumbnail">
           <a href="#">
-            <img src="src/components/BookCard/images/test-thumbnail.webp" alt="Book Cover" />
+            <img src="src/assets/images/test-thumbnail.webp" alt="Book Cover" />
           </a>
         </div>
         <div className="book-card-info">
@@ -20,4 +20,4 @@ const BookCard = () => {
   )
 }
 
-export default BookCard
+export default BookCard;

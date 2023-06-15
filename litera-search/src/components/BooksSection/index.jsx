@@ -1,6 +1,6 @@
 import React from 'react'
-import './BooksSection.css'
-import BookCard from '../BookCard/BookCard'
+import BookCard from '../BookCard/index'
+import './styles.css'
 
 const BooksSection = ({searchValue}) => {
   let resultText = searchValue === 1 ? 'Found 1 result' : `Found ${searchValue} results`;
@@ -22,4 +22,4 @@ const BooksSection = ({searchValue}) => {
   )
 }
 
-export default BooksSection
+export default BooksSection;
