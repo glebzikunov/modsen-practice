@@ -1,20 +1,30 @@
 import React, {useState} from 'react'
 import FilterSelect from '../FilterSelect/index'
 import SearchBar from '../SearchBar/index'
-import BOOK_SEARCH_API_KEY from '../../apikey'
+import { BOOK_API_KEY, BOOK_API_URL, MAX_RESULTS, CATEGORIES, SORTINGS} from '../../constants'
 import './styles.css'
 
-const SearchForm = ({onSearch}) => {
+const SearchForm = ({ onSearch }) => {
   const [input, setInput] = useState('');
-  
-  const fetchData = (value) => {
-    fetch(`https://www.googleapis.com/books/v1/volumes?q=intitle:${value}&key=${BOOK_SEARCH_API_KEY}&maxResults=30`)
+  const [category, setCategory] = useState('all');
+  const [sorting, setSorting] = useState('relevance');
+
+  const buildUrl = (input, category, sorting) => {
+    if (category === 'all' && sorting === 'relevance') {
+      return `${BOOK_API_URL}${input}+${BOOK_API_KEY}+${MAX_RESULTS}`;
+    } else if (category === 'all' && sorting !== 'relevance') {
+      return `${BOOK_API_URL}${input}&orderBy:${sorting}${MAX_RESULTS}`;
+    } else {
+      return `${BOOK_API_URL}${input}+subject:${category}&orderBy:${sorting}${MAX_RESULTS}`;
+    }
+  };
+
+  const fetchData = () => {
+    const url = buildUrl(input, category, sorting);
+    fetch(url)
       .then((response) => response.json())
       .then((json) => {
-        console.log(json.items);
-        console.log(json);
-        console.log(json.totalItems)
-        onSearch(json.totalItems);
+        onSearch(json);
       })
       .catch((error) => {
         console.error('Query error: ', error);
@@ -23,26 +33,19 @@ const SearchForm = ({onSearch}) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    fetchData(input);
+    fetchData();
   };
-
-  const categories = [
-    { value: "all", text: "All" },
-    { value: "art", text: "Art" },
-    { value: "biography", text: "Biography" },
-    { value: "computers", text: "Computers" },
-    { value: "history", text: "History" },
-    { value: "medical", text: "Medical" },
-    { value: "poetry", text: "Poetry" }
-  ];
-
-  const sortings = [
-    { value: "relevance", text: "Relevance" },
-    { value: "newest", text: "Newest" },
-  ];
 
   const handleInputChange = (value) => {
     setInput(value);
+  };
+
+  const handleCategoryChange = (value) => {
+    setCategory(value);
+  };
+
+  const handleSortingChange = (value) => {
+    setSorting(value);
   };
 
   return (
@@ -50,8 +53,16 @@ const SearchForm = ({onSearch}) => {
       <h1 className='search-form-title'>Litera Search</h1>
       <SearchBar value={input} onChange= {(e) => handleInputChange(e.target.value)} />
       <div className='sortings-wrapper'>
-        <FilterSelect optionType={categories} label='Categories' />
-        <FilterSelect optionType={sortings} label='Sorting by' />
+        <FilterSelect 
+          optionType={CATEGORIES}
+          label='Categories'
+          onChange={handleCategoryChange}
+        />
+        <FilterSelect 
+          optionType={SORTINGS}
+          label='Sorting by'
+          onChange={handleSortingChange}
+        />
       </div>
     </form>
   )
