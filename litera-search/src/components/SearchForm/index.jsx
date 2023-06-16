@@ -42,6 +42,7 @@ const SearchForm = ({ onSearch, onLoading }) => {
     onLoading(true)
     if (input.trim() === "") {
       alert("Input string can't be empty!")
+      onLoading(false)
     } else {
       const url = buildUrl(input, category, sorting)
       fetch(url)
