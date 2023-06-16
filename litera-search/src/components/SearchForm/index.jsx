@@ -1,4 +1,6 @@
 import React, { useState } from "react"
+import Swal from "sweetalert2"
+import withReactContent from "sweetalert2-react-content"
 import FilterSelect from "../FilterSelect/index"
 import SearchBar from "../SearchBar/index"
 import * as Constants from "../../constants"
@@ -8,6 +10,7 @@ const SearchForm = ({ onSearch, onLoading }) => {
   const [input, setInput] = useState("")
   const [category, setCategory] = useState("all")
   const [sorting, setSorting] = useState("relevance")
+  const MySwal = withReactContent(Swal)
 
   const buildUrl = (input, category, sorting) => {
     if (
@@ -41,19 +44,25 @@ const SearchForm = ({ onSearch, onLoading }) => {
   const fetchData = () => {
     onLoading(true)
     if (input.trim() === "") {
-      alert("Input string can't be empty!")
+      MySwal.fire({
+        icon: "warning",
+        title: "Oops...",
+        text: "Input string can't be empty!",
+      })
       onLoading(false)
     } else {
       const url = buildUrl(input, category, sorting)
       fetch(url)
         .then((response) => response.json())
         .then((json) => {
-          console.log(url)
-          console.log(json.items)
           onSearch(json)
         })
         .catch((error) => {
-          console.error("Query error: ", error)
+          MySwal.fire({
+            icon: "error",
+            title: "Oops...",
+            text: `Query error: ${error}`,
+          })
         })
         .finally(() => {
           onLoading(false)
