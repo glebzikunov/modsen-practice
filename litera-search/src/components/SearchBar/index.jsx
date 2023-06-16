@@ -2,10 +2,10 @@ import React from 'react';
 import { FaSearch } from 'react-icons/fa';
 import './styles.css'
 
-const SearchBar = ({ value, onChange }) => {
+const SearchBar = ({ value, onChange, onClick }) => {
   return (
     <div className='input-wrapper'>
-      <FaSearch id='search-icon'/>
+      <FaSearch id='search-icon' onClick={onClick}/>
       <input 
         type='text'
         name='book-search'

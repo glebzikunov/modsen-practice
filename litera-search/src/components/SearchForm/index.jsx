@@ -10,25 +10,29 @@ const SearchForm = ({ onSearch }) => {
   const [sorting, setSorting] = useState('relevance');
 
   const buildUrl = (input, category, sorting) => {
-    if (category === 'all' && sorting === 'relevance') {
-      return `${BOOK_API_URL}${input}+${BOOK_API_KEY}+${MAX_RESULTS}`;
-    } else if (category === 'all' && sorting !== 'relevance') {
-      return `${BOOK_API_URL}${input}&orderBy:${sorting}${MAX_RESULTS}`;
+    if ((category === 'all' && sorting === 'relevance') || (category === 'all' && sorting !== 'relevance')) {
+      return `${BOOK_API_URL}&orderBy=${sorting}${MAX_RESULTS}${BOOK_API_KEY}&q=${input}`;
     } else {
-      return `${BOOK_API_URL}${input}+subject:${category}&orderBy:${sorting}${MAX_RESULTS}`;
+      return `${BOOK_API_URL}&orderBy=${sorting}${MAX_RESULTS}${BOOK_API_KEY}&q=${input}+subject:${category}`;
     }
   };
 
   const fetchData = () => {
-    const url = buildUrl(input, category, sorting);
+    if(input.trim() === '') {
+      alert('Input string can\'t be empty!')
+    } else {
+      const url = buildUrl(input, category, sorting);
     fetch(url)
       .then((response) => response.json())
       .then((json) => {
+        console.log(url)
+        console.log(json.items)
         onSearch(json);
       })
       .catch((error) => {
         console.error('Query error: ', error);
       });
+    }
   }
 
   const handleSubmit = (e) => {
@@ -51,7 +55,11 @@ const SearchForm = ({ onSearch }) => {
   return (
     <form className='search-form' onSubmit={handleSubmit}>
       <h1 className='search-form-title'>Litera Search</h1>
-      <SearchBar value={input} onChange= {(e) => handleInputChange(e.target.value)} />
+      <SearchBar 
+        value={input}
+        onChange= {(e) => handleInputChange(e.target.value)}
+        onClick={handleSubmit}
+      />
       <div className='sortings-wrapper'>
         <FilterSelect 
           optionType={CATEGORIES}
