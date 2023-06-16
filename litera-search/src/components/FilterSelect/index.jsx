@@ -1,15 +1,15 @@
-import React from 'react'
-import './styles.css'
+import React from "react"
+import "./styles.css"
 
 const FilterSelect = ({ optionType, label, onChange }) => {
   const handleSelectChange = (e) => {
-    onChange(e.target.value);
-  } 
+    onChange(e.target.value)
+  }
 
   return (
-    <div className='sortings'>
+    <div className="sortings">
       <label htmlFor={label}>{label}</label>
-      <select id={label} onChange={handleSelectChange} >
+      <select id={label} onChange={handleSelectChange}>
         {optionType.map((option) => (
           <option key={option.value} value={option.value}>
             {option.text}
@@ -17,7 +17,7 @@ const FilterSelect = ({ optionType, label, onChange }) => {
         ))}
       </select>
     </div>
-  );
+  )
 }
 
-export default FilterSelect;
+export default FilterSelect

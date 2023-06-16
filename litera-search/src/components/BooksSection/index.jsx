@@ -5,12 +5,12 @@ import './styles.css'
 const BooksSection = ({ searchValue }) => {
   const numberOfBooks = searchValue.totalItems;
   const bookArr = searchValue.items;
-  const resultText = numberOfBooks === 1 ? 'Found 1 result' : `Found ${numberOfBooks} results`;
+  const searchResult = numberOfBooks === 1 ? 'Found 1 result' : `Found ${numberOfBooks} results`;
   
   return (
     <section className='books-section'>
       <div className="books-section-wrapper">
-        {searchValue && <h4 className='books-section-title'>{resultText}</h4>}
+        {searchValue && <h4 className='books-section-title'>{searchResult}</h4>}
         <div className='books-container'>
           {bookArr && (bookArr.map((book, index) => (
             <BookCard

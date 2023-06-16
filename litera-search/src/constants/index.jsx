@@ -1,6 +1,6 @@
-export const BOOK_API_URL = import.meta.env.VITE_BOOK_API_URL;
-export const BOOK_API_KEY = import.meta.env.VITE_BOOK_API_KEY;
-export const MAX_RESULTS = "&maxResults=30";
+export const BOOK_API_URL = import.meta.env.VITE_BOOK_API_URL
+export const BOOK_API_KEY = import.meta.env.VITE_BOOK_API_KEY
+export const MAX_RESULTS = "&maxResults=30"
 
 export const CATEGORIES = [
   { value: "all", text: "All" },
@@ -9,10 +9,12 @@ export const CATEGORIES = [
   { value: "computers", text: "Computers" },
   { value: "history", text: "History" },
   { value: "medical", text: "Medical" },
-  { value: "poetry", text: "Poetry" }
-];
+  { value: "poetry", text: "Poetry" },
+]
 
 export const SORTINGS = [
   { value: "relevance", text: "Relevance" },
   { value: "newest", text: "Newest" },
-];
+]
+
+export const IMAGE_NOT_FOUND = "./src/assets/images/thumbnail-not-found.png"

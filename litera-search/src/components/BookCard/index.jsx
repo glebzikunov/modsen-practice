@@ -1,15 +1,17 @@
-import React from 'react'
-import './styles.css'
+import React from "react"
+import * as Constants from "../../constants"
+import "./styles.css"
 
 const BookCard = ({ bookCover, bookCategories, bookTitle, bookAuthors }) => {
-  const notFound = './src/assets/images/thumbnail-not-found.png'
-  
   return (
     <div className="book-card">
       <div className="book-card-wrapper">
         <div className="book-card-thumbnail">
           <a href="#">
-            <img src={bookCover || notFound} alt="Book Cover" />
+            <img
+              src={bookCover || Constants.IMAGE_NOT_FOUND}
+              alt="Book Cover"
+            />
           </a>
         </div>
         <div className="book-card-info">
@@ -22,4 +24,4 @@ const BookCard = ({ bookCover, bookCategories, bookTitle, bookAuthors }) => {
   )
 }
 
-export default BookCard;
+export default BookCard
