@@ -4,7 +4,7 @@ import SearchBar from "../SearchBar/index"
 import * as Constants from "../../constants"
 import "./styles.css"
 
-const SearchForm = ({ onSearch }) => {
+const SearchForm = ({ onSearch, onLoading }) => {
   const [input, setInput] = useState("")
   const [category, setCategory] = useState("all")
   const [sorting, setSorting] = useState("relevance")
@@ -39,6 +39,7 @@ const SearchForm = ({ onSearch }) => {
   }
 
   const fetchData = () => {
+    onLoading(true)
     if (input.trim() === "") {
       alert("Input string can't be empty!")
     } else {
@@ -52,6 +53,9 @@ const SearchForm = ({ onSearch }) => {
         })
         .catch((error) => {
           console.error("Query error: ", error)
+        })
+        .finally(() => {
+          onLoading(false)
         })
     }
   }
