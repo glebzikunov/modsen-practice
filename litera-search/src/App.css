@@ -21,11 +21,14 @@
   width: 100%;
   margin: 0 auto;
   padding: 10px 20px 0px 20px;
-  text-align: center;
 }
 
 .App-footer {
   margin-top: auto;
+}
+
+.loader-wrapper {
+  text-align: center;
 }
 
 .loader {

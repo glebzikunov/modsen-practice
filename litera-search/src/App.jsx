@@ -22,7 +22,9 @@ const App = () => {
       </header>
       <main className="App-main">
         {loading ? (
-          <span className="loader"></span>
+          <div className="loader-wrapper">
+            <span className="loader"></span>
+          </div>
         ) : (
           <BooksSection searchValue={searchValue} />
         )}

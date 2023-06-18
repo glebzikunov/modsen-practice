@@ -1,6 +1,6 @@
 export const BOOK_API_URL = import.meta.env.VITE_BOOK_API_URL
 export const BOOK_API_KEY = import.meta.env.VITE_BOOK_API_KEY
-export const MAX_RESULTS = "&maxResults=30"
+export const MAX_RESULTS = 30
 
 export const CATEGORIES = [
   { value: "all", text: "All" },

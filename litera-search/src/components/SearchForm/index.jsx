@@ -21,6 +21,7 @@ const SearchForm = ({ onSearch, onLoading }) => {
         Constants.BOOK_API_URL +
         "&orderBy=" +
         sorting +
+        "&maxResults=" +
         Constants.MAX_RESULTS +
         Constants.BOOK_API_KEY +
         "&q=" +
@@ -31,6 +32,7 @@ const SearchForm = ({ onSearch, onLoading }) => {
         Constants.BOOK_API_URL +
         "&orderBy=" +
         sorting +
+        "&maxResults=" +
         Constants.MAX_RESULTS +
         Constants.BOOK_API_KEY +
         "&q=" +
@@ -42,15 +44,14 @@ const SearchForm = ({ onSearch, onLoading }) => {
   }
 
   const fetchData = () => {
-    onLoading(true)
     if (input.trim() === "") {
       MySwal.fire({
         icon: "warning",
         title: "Oops...",
         text: "Input string can't be empty!",
       })
-      onLoading(false)
     } else {
+      onLoading(true)
       const url = buildUrl(input, category, sorting)
       fetch(url)
         .then((response) => response.json())
