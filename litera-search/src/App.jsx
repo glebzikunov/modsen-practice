@@ -13,7 +13,7 @@ const App = () => {
   const [category, setCategory] = useState("all")
   const [sorting, setSorting] = useState("relevance")
   const [booksArr, setBooksArr] = useState([])
-  const [startIndex, setStartIndex] = useState(1)
+  const [startIndex, setStartIndex] = useState(0)
   const MySwal = withReactContent(Swal)
 
   const handleInputChange = (value) => {

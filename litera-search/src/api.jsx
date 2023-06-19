@@ -5,37 +5,21 @@ import * as Constants from "./constants"
 const MySwal = withReactContent(Swal)
 
 export const buildUrl = (input, category, sorting, startIndex) => {
-  if (
-    (category === "all" && sorting === "relevance") ||
-    (category === "all" && sorting !== "relevance")
-  ) {
-    return (
-      Constants.BOOK_API_URL +
-      "&orderBy=" +
-      sorting +
-      "&startIndex=" +
-      startIndex +
-      "&maxResults=" +
-      Constants.MAX_RESULTS +
-      Constants.BOOK_API_KEY +
-      "&q=" +
-      input
-    )
+  const baseParams =
+    "&orderBy=" +
+    sorting +
+    "&startIndex=" +
+    startIndex +
+    "&maxResults=" +
+    Constants.MAX_RESULTS +
+    Constants.BOOK_API_KEY +
+    "&q=" +
+    input
+
+  if (category === "all") {
+    return Constants.BOOK_API_URL + baseParams
   } else {
-    return (
-      Constants.BOOK_API_URL +
-      "&orderBy=" +
-      sorting +
-      "&startIndex=" +
-      startIndex +
-      "&maxResults=" +
-      Constants.MAX_RESULTS +
-      Constants.BOOK_API_KEY +
-      "&q=" +
-      input +
-      "+subject:" +
-      category
-    )
+    return Constants.BOOK_API_URL + baseParams + "+subject:" + category
   }
 }
 
