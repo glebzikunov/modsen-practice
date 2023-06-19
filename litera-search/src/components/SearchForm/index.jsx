@@ -1,91 +1,35 @@
 import React, { useState } from "react"
-import Swal from "sweetalert2"
-import withReactContent from "sweetalert2-react-content"
 import FilterSelect from "../FilterSelect/index"
 import SearchBar from "../SearchBar/index"
 import * as Constants from "../../constants"
 import "./styles.css"
 
-const SearchForm = ({ onSearch, onLoading }) => {
+const SearchForm = ({
+  onSubmit,
+  onCategoryChange,
+  onSortingChange,
+  category,
+  sorting,
+  onInputChange,
+}) => {
   const [input, setInput] = useState("")
-  const [category, setCategory] = useState("all")
-  const [sorting, setSorting] = useState("relevance")
-  const MySwal = withReactContent(Swal)
-
-  const buildUrl = (input, category, sorting) => {
-    if (
-      (category === "all" && sorting === "relevance") ||
-      (category === "all" && sorting !== "relevance")
-    ) {
-      return (
-        Constants.BOOK_API_URL +
-        "&orderBy=" +
-        sorting +
-        "&maxResults=" +
-        Constants.MAX_RESULTS +
-        Constants.BOOK_API_KEY +
-        "&q=" +
-        input
-      )
-    } else {
-      return (
-        Constants.BOOK_API_URL +
-        "&orderBy=" +
-        sorting +
-        "&maxResults=" +
-        Constants.MAX_RESULTS +
-        Constants.BOOK_API_KEY +
-        "&q=" +
-        input +
-        "+subject:" +
-        category
-      )
-    }
-  }
-
-  const fetchData = () => {
-    if (input.trim() === "") {
-      MySwal.fire({
-        icon: "warning",
-        title: "Oops...",
-        text: "Input string can't be empty!",
-      })
-    } else {
-      onLoading(true)
-      const url = buildUrl(input, category, sorting)
-      fetch(url)
-        .then((response) => response.json())
-        .then((json) => {
-          onSearch(json)
-        })
-        .catch((error) => {
-          MySwal.fire({
-            icon: "error",
-            title: "Oops...",
-            text: `Query error: ${error}`,
-          })
-        })
-        .finally(() => {
-          onLoading(false)
-        })
-    }
-  }
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    fetchData()
+    onSubmit(input)
   }
 
   const handleInputChange = (value) => {
     setInput(value)
+    onInputChange(value)
   }
 
   const handleCategoryChange = (value) => {
-    setCategory(value)
+    onCategoryChange(value)
   }
 
   const handleSortingChange = (value) => {
-    setSorting(value)
+    onSortingChange(value)
   }
 
   return (
@@ -100,11 +44,13 @@ const SearchForm = ({ onSearch, onLoading }) => {
         <FilterSelect
           optionType={Constants.CATEGORIES}
           label="Categories"
+          value={category}
           onChange={handleCategoryChange}
         />
         <FilterSelect
           optionType={Constants.SORTINGS}
           label="Sorting by"
+          value={sorting}
           onChange={handleSortingChange}
         />
       </div>

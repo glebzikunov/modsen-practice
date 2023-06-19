@@ -2,9 +2,8 @@ import React from "react"
 import BookCard from "../BookCard/index"
 import "./styles.css"
 
-const BooksSection = ({ searchValue }) => {
+const BooksSection = ({ searchValue, booksArr, onLoadMore }) => {
   const numberOfBooks = searchValue.totalItems
-  const bookArr = searchValue.items
   const searchResult =
     numberOfBooks === 1 ? "Found 1 result" : `Found ${numberOfBooks} results`
 
@@ -13,8 +12,8 @@ const BooksSection = ({ searchValue }) => {
       <div className="books-section-wrapper">
         {searchValue && <h4 className="books-section-title">{searchResult}</h4>}
         <div className="books-container">
-          {bookArr &&
-            bookArr.map((book, index) => (
+          {booksArr &&
+            booksArr.map((book, index) => (
               <BookCard
                 key={index}
                 bookCover={
@@ -33,6 +32,11 @@ const BooksSection = ({ searchValue }) => {
               />
             ))}
         </div>
+        {searchValue && (
+          <button className="book-section-btn" onClick={onLoadMore}>
+            Load More
+          </button>
+        )}
       </div>
     </section>
   )
