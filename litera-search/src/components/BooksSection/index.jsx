@@ -1,10 +1,9 @@
-import React, { useState } from "react"
+import React from "react"
 import BookCard from "../BookCard/index"
 import "./styles.css"
 
 const BooksSection = ({ searchValue, booksArr, onLoadMore }) => {
   const numberOfBooks = searchValue.totalItems
-  const bookArr = searchValue.items
   const searchResult =
     numberOfBooks === 1 ? "Found 1 result" : `Found ${numberOfBooks} results`
 

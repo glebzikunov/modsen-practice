@@ -22,7 +22,7 @@ const App = () => {
 
   const handleSearch = (value) => {
     setSearchValue(value)
-    setBooksArr((prevBooksArr) => [...prevBooksArr, ...value.items])
+    setBooksArr(value.items)
   }
 
   const handleLoading = (loadingStatus) => {
@@ -37,7 +37,7 @@ const App = () => {
         text: "Input string can't be empty!",
       })
     } else {
-      const url = buildUrl(input, category, sorting, startIndex)
+      const url = buildUrl(input, category, sorting, 0)
       setBooksArr([])
       fetchData(url, handleSearch, handleLoading)
     }
@@ -56,7 +56,16 @@ const App = () => {
     setStartIndex(newStartIndex)
 
     const url = buildUrl(inputString, category, sorting, newStartIndex)
-    fetchData(url, handleSearch, handleLoading)
+    fetchData(
+      url,
+      (value) => {
+        setBooksArr((prevBooksArr) => [...prevBooksArr, ...value.items])
+      },
+      () => {
+        setLoading(false)
+      }
+    )
+    console.log(booksArr.length)
   }
 
   return (
