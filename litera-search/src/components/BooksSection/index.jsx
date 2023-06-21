@@ -33,7 +33,7 @@ const BooksSection = ({ searchValue, booksArr, onLoadMore }) => {
               />
             ))}
         </div>
-        {searchValue && (
+        {numberOfBooks > 0 && (
           <button className="book-section-btn" onClick={onLoadMore}>
             Load More
           </button>
