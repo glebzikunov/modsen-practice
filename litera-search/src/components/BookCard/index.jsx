@@ -1,6 +1,6 @@
 import React from "react"
 import { Link } from "react-router-dom"
-import * as Constants from "../../constants"
+import { IMAGE_NOT_FOUND } from "../../constants"
 import "./styles.css"
 
 const BookCard = ({
@@ -15,10 +15,7 @@ const BookCard = ({
       <div className="book-card-wrapper">
         <div className="book-card-thumbnail">
           <Link to={`/book/:${bookId}`}>
-            <img
-              src={bookCover || Constants.IMAGE_NOT_FOUND}
-              alt="Book Cover"
-            />
+            <img src={bookCover || IMAGE_NOT_FOUND} alt="Book Cover" />
           </Link>
         </div>
         <div className="book-card-info">

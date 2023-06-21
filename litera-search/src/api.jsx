@@ -17,9 +17,9 @@ export const buildUrl = (input, category, sorting, startIndex) => {
     input
 
   if (category === "all") {
-    return Constants.BOOK_API_URL + baseParams
+    return Constants.BOOK_API_URL + "?" + baseParams
   } else {
-    return Constants.BOOK_API_URL + baseParams + "+subject:" + category
+    return Constants.BOOK_API_URL + "?" + baseParams + "+subject:" + category
   }
 }
 

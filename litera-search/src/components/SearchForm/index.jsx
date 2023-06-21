@@ -1,7 +1,7 @@
 import React, { useState } from "react"
 import FilterSelect from "../FilterSelect/index"
 import SearchBar from "../SearchBar/index"
-import * as Constants from "../../constants"
+import { CATEGORIES, SORTINGS } from "../../constants"
 import "./styles.css"
 
 const SearchForm = ({
@@ -42,13 +42,13 @@ const SearchForm = ({
       />
       <div className="sortings-wrapper">
         <FilterSelect
-          optionType={Constants.CATEGORIES}
+          optionType={CATEGORIES}
           label="Categories"
           value={category}
           onChange={handleCategoryChange}
         />
         <FilterSelect
-          optionType={Constants.SORTINGS}
+          optionType={SORTINGS}
           label="Sorting by"
           value={sorting}
           onChange={handleSortingChange}
