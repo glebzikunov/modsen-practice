@@ -1,10 +1,10 @@
 main {
   overflow: hidden;
   display: flex;
-  min-height: 100vh;
 }
 
 .book-details {
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
 }

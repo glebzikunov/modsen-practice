@@ -1,18 +1,25 @@
 import React from "react"
+import { Link } from "react-router-dom"
 import * as Constants from "../../constants"
 import "./styles.css"
 
-const BookCard = ({ bookCover, bookCategories, bookTitle, bookAuthors }) => {
+const BookCard = ({
+  bookId,
+  bookCover,
+  bookCategories,
+  bookTitle,
+  bookAuthors,
+}) => {
   return (
     <div className="book-card">
       <div className="book-card-wrapper">
         <div className="book-card-thumbnail">
-          <a href="#">
+          <Link to={`/book/:${bookId}`}>
             <img
               src={bookCover || Constants.IMAGE_NOT_FOUND}
               alt="Book Cover"
             />
-          </a>
+          </Link>
         </div>
         <div className="book-card-info">
           <h3 className="book-card-category">{bookCategories}</h3>

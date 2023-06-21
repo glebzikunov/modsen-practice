@@ -16,6 +16,7 @@ const BooksSection = ({ searchValue, booksArr, onLoadMore }) => {
             booksArr.map((book, index) => (
               <BookCard
                 key={index}
+                bookId={book.id}
                 bookCover={
                   book.volumeInfo.imageLinks &&
                   book.volumeInfo.imageLinks.smallThumbnail

@@ -11,8 +11,7 @@
   padding: 15px;
 }
 
-.book-card-thumbnail,
-a {
+.book-card-thumbnail {
   display: flex;
   justify-content: center;
 }
