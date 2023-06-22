@@ -3,6 +3,8 @@ import ReactDOM from "react-dom/client"
 import { createBrowserRouter, RouterProvider } from "react-router-dom"
 import App from "./App.jsx"
 import BookDetails from "./components/BookDetails/index.jsx"
+import NotFound from "./components/NotFound/index.jsx"
+import ErrorBoudary from "./components/ErrorBoudary/index.jsx"
 import "./index.css"
 
 const router = createBrowserRouter([
@@ -15,10 +17,17 @@ const router = createBrowserRouter([
     path: "/book/:id",
     element: <BookDetails />,
   },
+
+  {
+    path: "*",
+    element: <NotFound />,
+  },
 ])
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <ErrorBoudary>
+      <RouterProvider router={router} />
+    </ErrorBoudary>
   </React.StrictMode>
 )

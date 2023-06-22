@@ -3,6 +3,7 @@ import Swal from "sweetalert2"
 import withReactContent from "sweetalert2-react-content"
 import SearchForm from "./components/SearchForm/index"
 import BooksSection from "./components/BooksSection/index"
+import ErrorBoudary from "./components/ErrorBoudary"
 import { fetchData, buildUrl } from "./api"
 import "./App.css"
 
@@ -69,32 +70,33 @@ const App = () => {
   }
 
   return (
-    <div className="App">
-      <header className="App-header">
-        <SearchForm
-          onSubmit={handleSubmit}
-          onCategoryChange={handleCategoryChange}
-          onSortingChange={handleSortingChange}
-          category={category}
-          sorting={sorting}
-          onInputChange={handleInputChange}
-        />
-      </header>
-      <main className="App-main">
-        {loading ? (
-          <div className="loader-wrapper">
-            <span className="loader"></span>
-          </div>
-        ) : (
-          <BooksSection
-            searchValue={searchValue}
-            booksArr={booksArr}
-            onLoadMore={handleLoadMore}
+    <ErrorBoudary>
+      <div className="App">
+        <header className="App-header">
+          <SearchForm
+            onSubmit={handleSubmit}
+            onCategoryChange={handleCategoryChange}
+            onSortingChange={handleSortingChange}
+            category={category}
+            sorting={sorting}
+            onInputChange={handleInputChange}
           />
-        )}
-      </main>
-      <footer className="App-footer">Pod</footer>
-    </div>
+        </header>
+        <main className="App-main">
+          {loading ? (
+            <div className="loader-wrapper">
+              <span className="loader"></span>
+            </div>
+          ) : (
+            <BooksSection
+              searchValue={searchValue}
+              booksArr={booksArr}
+              onLoadMore={handleLoadMore}
+            />
+          )}
+        </main>
+      </div>
+    </ErrorBoudary>
   )
 }
 

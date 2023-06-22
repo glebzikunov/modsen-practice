@@ -1,0 +1,29 @@
+a:active,
+a:hover,
+a {
+  text-decoration: underline;
+  color: #fff;
+  margin-top: 20px;
+  align-self: flex-end;
+}
+
+.not-found {
+  min-height: 100vh;
+  padding: 0px 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.not-found-wrapper {
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  background-color: #000;
+  color: #fff;
+}
+
+.not-found-subtitle {
+  margin-top: 6px;
+}

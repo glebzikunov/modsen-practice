@@ -1,6 +1,6 @@
 import Swal from "sweetalert2"
 import withReactContent from "sweetalert2-react-content"
-import * as Constants from "./constants"
+import { MAX_RESULTS, BOOK_API_URL, BOOK_API_KEY } from "./constants"
 
 const MySwal = withReactContent(Swal)
 
@@ -11,15 +11,15 @@ export const buildUrl = (input, category, sorting, startIndex) => {
     "&startIndex=" +
     startIndex +
     "&maxResults=" +
-    Constants.MAX_RESULTS +
-    Constants.BOOK_API_KEY +
+    MAX_RESULTS +
+    BOOK_API_KEY +
     "&q=" +
     input
 
   if (category === "all") {
-    return Constants.BOOK_API_URL + "?" + baseParams
+    return BOOK_API_URL + "?" + baseParams
   } else {
-    return Constants.BOOK_API_URL + "?" + baseParams + "+subject:" + category
+    return BOOK_API_URL + "?" + baseParams + "+subject:" + category
   }
 }
 
