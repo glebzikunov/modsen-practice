@@ -16,5 +16,3 @@ export const SORTINGS = [
   { value: "relevance", text: "Relevance" },
   { value: "newest", text: "Newest" },
 ]
-
-export const IMAGE_NOT_FOUND = "/src/assets/images/thumbnail-not-found.png"
