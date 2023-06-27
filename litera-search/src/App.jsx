@@ -1,10 +1,10 @@
 import React, { useState } from "react"
 import Swal from "sweetalert2"
 import withReactContent from "sweetalert2-react-content"
-import SearchForm from "./components/SearchForm/index"
-import BooksSection from "./components/BooksSection/index"
-import ErrorBoudary from "./components/ErrorBoudary"
-import { fetchData, buildUrl } from "./api/api"
+import SearchForm from "components/SearchForm"
+import BooksSection from "components/BooksSection"
+import ErrorBoudary from "components/ErrorBoudary"
+import { fetchData, buildUrl } from "api/api"
 import "./App.css"
 
 const App = () => {

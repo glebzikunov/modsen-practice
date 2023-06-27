@@ -6,7 +6,7 @@
 }
 
 .App-header {
-  background-image: url("/src/assets/images/form-backgorund.png");
+  background-image: url(assets/images/form-backgorund.png);
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;

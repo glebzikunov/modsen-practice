@@ -1,7 +1,7 @@
 import React, { useState } from "react"
-import FilterSelect from "../FilterSelect/index"
-import SearchBar from "../SearchBar/index"
-import { CATEGORIES, SORTINGS } from "../../constants"
+import FilterSelect from "components/FilterSelect"
+import SearchBar from "components/SearchBar"
+import { CATEGORIES, SORTINGS } from "constants/index"
 import "./styles.css"
 
 const SearchForm = ({

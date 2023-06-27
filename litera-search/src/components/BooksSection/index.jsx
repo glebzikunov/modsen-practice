@@ -1,5 +1,5 @@
 import React from "react"
-import BookCard from "../BookCard/index"
+import BookCard from "components/BookCard"
 import "./styles.css"
 
 const BooksSection = ({ searchValue, booksArr, onLoadMore }) => {

@@ -1,8 +1,8 @@
 import React from "react"
 import { useState, useEffect } from "react"
 import { useParams, useNavigate } from "react-router-dom"
-import { BOOK_API_URL } from "../../constants"
-import ErrorBoudary from "../ErrorBoudary"
+import { BOOK_API_URL } from "constants/index"
+import ErrorBoudary from "components/ErrorBoudary"
 import "./styles.css"
 
 const BookDetails = () => {
