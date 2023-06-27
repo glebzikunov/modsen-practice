@@ -32,12 +32,16 @@ const SearchForm = ({
     onSortingChange(value)
   }
 
+  const handleSearchBarChange = (e) => {
+    handleInputChange(e.target.value)
+  }
+
   return (
     <form className="search-form" onSubmit={handleSubmit}>
       <h1 className="search-form-title">Litera Search</h1>
       <SearchBar
         value={input}
-        onChange={(e) => handleInputChange(e.target.value)}
+        onChange={handleSearchBarChange}
         onClick={handleSubmit}
       />
       <div className="sortings-wrapper">
