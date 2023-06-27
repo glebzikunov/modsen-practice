@@ -4,7 +4,7 @@ import withReactContent from "sweetalert2-react-content"
 import SearchForm from "./components/SearchForm/index"
 import BooksSection from "./components/BooksSection/index"
 import ErrorBoudary from "./components/ErrorBoudary"
-import { fetchData, buildUrl } from "./api"
+import { fetchData, buildUrl } from "./api/api"
 import "./App.css"
 
 const App = () => {

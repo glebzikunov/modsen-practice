@@ -1,6 +1,6 @@
 import Swal from "sweetalert2"
 import withReactContent from "sweetalert2-react-content"
-import { MAX_RESULTS, BOOK_API_URL, BOOK_API_KEY } from "./constants"
+import { MAX_RESULTS, BOOK_API_URL, BOOK_API_KEY } from "../constants"
 
 const MySwal = withReactContent(Swal)
 
