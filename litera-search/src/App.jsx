@@ -54,7 +54,7 @@ const App = () => {
 
   const handleLoadMore = () => {
     const newStartIndex = startIndex + 30
-    setStartIndex(newStartIndex)
+    setStartIndex((prevStartIndex) => prevStartIndex + 30)
 
     const url = buildUrl(inputString, category, sorting, newStartIndex)
     fetchData(
