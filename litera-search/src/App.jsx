@@ -1,6 +1,5 @@
 import React, { useState } from "react"
 import Swal from "sweetalert2"
-import withReactContent from "sweetalert2-react-content"
 import SearchForm from "components/SearchForm"
 import BooksSection from "components/BooksSection"
 import ErrorBoudary from "components/ErrorBoudary"
@@ -15,7 +14,6 @@ const App = () => {
   const [sorting, setSorting] = useState("relevance")
   const [booksArr, setBooksArr] = useState([])
   const [startIndex, setStartIndex] = useState(0)
-  const MySwal = withReactContent(Swal)
 
   const handleInputChange = (value) => {
     setInputString(value)
@@ -32,7 +30,7 @@ const App = () => {
 
   const handleSubmit = (input) => {
     if (input.trim() === "") {
-      MySwal.fire({
+      Swal.fire({
         icon: "warning",
         title: "Oops...",
         text: "Input string can't be empty!",

@@ -1,8 +1,5 @@
 import Swal from "sweetalert2"
-import withReactContent from "sweetalert2-react-content"
 import { MAX_RESULTS, BOOK_API_URL, BOOK_API_KEY } from "../constants"
-
-const MySwal = withReactContent(Swal)
 
 export const buildUrl = (input, category, sorting, startIndex) => {
   const baseParams =
@@ -31,7 +28,7 @@ export const fetchData = (url, onSearch, onLoading) => {
       onSearch(json)
     })
     .catch((error) => {
-      MySwal.fire({
+      Swal.fire({
         icon: "error",
         title: "Oops...",
         text: `Error during search query: ${error}`,
