@@ -5,7 +5,9 @@ import "./styles.css"
 const BooksSection = ({ searchValue, booksArr, onLoadMore }) => {
   const numberOfBooks = searchValue.totalItems
   const searchResult =
-    numberOfBooks === 1 ? "Found 1 result" : `Found ${numberOfBooks} results`
+    numberOfBooks === 1
+      ? `Found ${numberOfBooks} result`
+      : `Found ${numberOfBooks} results`
 
   return (
     <section className="books-section">
