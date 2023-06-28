@@ -1,9 +1,10 @@
-import React, { useState } from "react"
+import React, { useState, useContext } from "react"
 import Swal from "sweetalert2"
 import SearchForm from "components/SearchForm"
 import BooksSection from "components/BooksSection"
 import ErrorBoudary from "components/ErrorBoudary"
 import { fetchData, buildUrl } from "api/api"
+import { BookContext } from "components/Context"
 import "./App.css"
 
 const App = () => {
@@ -12,7 +13,8 @@ const App = () => {
   const [inputString, setInputString] = useState("")
   const [category, setCategory] = useState("all")
   const [sorting, setSorting] = useState("relevance")
-  const [booksArr, setBooksArr] = useState([])
+  const [numberOfBooks, setNumberOfBooks] = useState(0)
+  const { booksArr, updateBooksArr } = useContext(BookContext)
   const [startIndex, setStartIndex] = useState(0)
 
   const handleInputChange = (value) => {
@@ -21,7 +23,8 @@ const App = () => {
 
   const handleSearch = (value) => {
     setSearchValue(value)
-    setBooksArr(value.items)
+    setNumberOfBooks(value.totalItems)
+    updateBooksArr(value.items)
   }
 
   const handleLoading = (loadingStatus) => {
@@ -37,7 +40,7 @@ const App = () => {
       })
     } else {
       const url = buildUrl(input, category, sorting, 0)
-      setBooksArr([])
+      updateBooksArr([])
       fetchData(url, handleSearch, handleLoading)
     }
   }
@@ -58,7 +61,7 @@ const App = () => {
     fetchData(
       url,
       (value) => {
-        setBooksArr((prevBooksArr) => [...prevBooksArr, ...value.items])
+        updateBooksArr((prevBooksArr) => [...prevBooksArr, ...value.items])
       },
       () => {
         setLoading(false)
@@ -90,6 +93,7 @@ const App = () => {
               searchValue={searchValue}
               booksArr={booksArr}
               onLoadMore={handleLoadMore}
+              numberOfBooks={numberOfBooks}
             />
           )}
         </main>
