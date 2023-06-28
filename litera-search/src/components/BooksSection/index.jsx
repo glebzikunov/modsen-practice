@@ -2,8 +2,7 @@ import React from "react"
 import BookCard from "components/BookCard"
 import "./styles.css"
 
-const BooksSection = ({ searchValue, booksArr, onLoadMore }) => {
-  const numberOfBooks = searchValue.totalItems
+const BooksSection = ({ searchValue, booksArr, onLoadMore, numberOfBooks }) => {
   const searchResult =
     numberOfBooks === 1
       ? `Found ${numberOfBooks} result`
