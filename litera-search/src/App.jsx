@@ -2,7 +2,7 @@ import React, { useState, useContext } from "react"
 import Swal from "sweetalert2"
 import SearchForm from "components/SearchForm"
 import BooksSection from "components/BooksSection"
-import ErrorBoudary from "components/ErrorBoudary"
+import ErrorBoundary from "components/ErrorBoundary"
 import { fetchData, buildUrl } from "api/api"
 import { BookContext } from "components/Context"
 import "./App.css"
@@ -71,7 +71,7 @@ const App = () => {
   }
 
   return (
-    <ErrorBoudary>
+    <ErrorBoundary>
       <div className="App">
         <header className="App-header">
           <SearchForm
@@ -98,7 +98,7 @@ const App = () => {
           )}
         </main>
       </div>
-    </ErrorBoudary>
+    </ErrorBoundary>
   )
 }
 

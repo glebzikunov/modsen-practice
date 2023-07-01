@@ -1,6 +1,6 @@
 import React, { Component } from "react"
 
-class ErrorBoudary extends Component {
+class ErrorBoundary extends Component {
   constructor(props) {
     super(props)
     this.state = { hasError: false }
@@ -23,4 +23,4 @@ class ErrorBoudary extends Component {
   }
 }
 
-export default ErrorBoudary
+export default ErrorBoundary

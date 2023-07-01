@@ -4,14 +4,14 @@ import { BrowserRouter, Routes, Route } from "react-router-dom"
 import App from "./App.jsx"
 import NotFound from "components/NotFound/index.jsx"
 import BookDetails from "components/BookDetails/index.jsx"
-import ErrorBoudary from "components/ErrorBoudary/index.jsx"
+import ErrorBoundary from "components/ErrorBoundary/index.jsx"
 import { BookProvider } from "components/Context"
 import { PATHS } from "constants/index.jsx"
 import "./index.css"
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <ErrorBoudary>
+    <ErrorBoundary>
       <BrowserRouter>
         <BookProvider>
           <Routes>
@@ -21,6 +21,6 @@ ReactDOM.createRoot(document.getElementById("root")).render(
           </Routes>
         </BookProvider>
       </BrowserRouter>
-    </ErrorBoudary>
+    </ErrorBoundary>
   </React.StrictMode>
 )
