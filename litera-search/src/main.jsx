@@ -6,6 +6,7 @@ import NotFound from "components/NotFound/index.jsx"
 import BookDetails from "components/BookDetails/index.jsx"
 import ErrorBoudary from "components/ErrorBoudary/index.jsx"
 import { BookProvider } from "components/Context"
+import { PATHS } from "constants/index.jsx"
 import "./index.css"
 
 ReactDOM.createRoot(document.getElementById("root")).render(
@@ -14,9 +15,9 @@ ReactDOM.createRoot(document.getElementById("root")).render(
       <BrowserRouter>
         <BookProvider>
           <Routes>
-            <Route path="/" element={<App />} />
-            <Route path="/book/:id" element={<BookDetails />} />
-            <Route path="*" element={<NotFound />} />
+            <Route path={PATHS.home} element={<App />} />
+            <Route path={PATHS.bookDetails} element={<BookDetails />} />
+            <Route path={PATHS.notFound} element={<NotFound />} />
           </Routes>
         </BookProvider>
       </BrowserRouter>

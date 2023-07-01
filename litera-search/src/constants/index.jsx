@@ -16,3 +16,9 @@ export const SORTINGS = [
   { value: "relevance", text: "Relevance" },
   { value: "newest", text: "Newest" },
 ]
+
+export const PATHS = {
+  home: "/",
+  bookDetails: "/book/:id",
+  notFound: "*",
+}
