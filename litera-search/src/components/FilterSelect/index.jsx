@@ -10,9 +10,9 @@ const FilterSelect = ({ optionType, label, onChange }) => {
     <div className="sortings">
       <label htmlFor={label}>{label}</label>
       <select id={label} onChange={handleSelectChange}>
-        {optionType.map((option) => (
-          <option key={option.value} value={option.value}>
-            {option.text}
+        {optionType.map(({ value, text }) => (
+          <option key={value} value={value}>
+            {text}
           </option>
         ))}
       </select>
