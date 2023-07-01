@@ -14,25 +14,7 @@ const BooksSection = ({ searchValue, booksArr, onLoadMore, numberOfBooks }) => {
         {searchValue && <h4 className="books-section-title">{searchResult}</h4>}
         <div className="books-container">
           {booksArr &&
-            booksArr.map((book, index) => (
-              <BookCard
-                key={index}
-                bookId={book.id}
-                bookCover={
-                  book.volumeInfo.imageLinks &&
-                  book.volumeInfo.imageLinks.smallThumbnail
-                }
-                bookCategories={
-                  book.volumeInfo.categories &&
-                  Array.from(book.volumeInfo.categories)[0]
-                }
-                bookTitle={book.volumeInfo.title}
-                bookAuthors={
-                  book.volumeInfo.authors &&
-                  Array.from(book.volumeInfo.authors).join(", ")
-                }
-              />
-            ))}
+            booksArr.map((book) => <BookCard key={book.id} {...book} />)}
         </div>
         {numberOfBooks > 0 && (
           <button className="book-section-btn" onClick={onLoadMore}>

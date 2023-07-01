@@ -14,16 +14,14 @@ const BookDetails = () => {
     fetch(BOOK_API_URL + "/" + id.slice(1))
       .then((response) => response.json())
       .then((data) => {
+        const { imageLinks, categories, title, authors, description } =
+          data.volumeInfo
         const foundBook = {
-          cover:
-            data.volumeInfo.imageLinks &&
-            data.volumeInfo.imageLinks.smallThumbnail,
-          category: data.volumeInfo.categories || "Nothing found",
-          title: data.volumeInfo.title,
-          authors:
-            data.volumeInfo.authors &&
-            Array.from(data.volumeInfo.authors).join(", "),
-          description: data.volumeInfo.description || "Nothing found",
+          cover: imageLinks && imageLinks.smallThumbnail,
+          category: categories || "Nothing found",
+          title: title,
+          authors: authors && Array.from(authors).join(", "),
+          description: description || "Nothing found",
         }
         setBook(foundBook)
       })

@@ -4,17 +4,19 @@ import IMAGE_NOT_FOUND from "assets/images/thumbnail-not-found.png"
 import "./styles.css"
 
 const BookCard = ({
-  bookId,
-  bookCover,
-  bookCategories,
-  bookTitle,
-  bookAuthors,
+  id,
+  volumeInfo: { imageLinks, categories, title, authors },
 }) => {
+  const bookCover = imageLinks && imageLinks.smallThumbnail
+  const bookCategories = categories
+  const bookTitle = title
+  const bookAuthors = authors && Array.from(authors)?.join(", ")
+
   return (
     <div className="book-card">
       <div className="book-card-wrapper">
         <div className="book-card-thumbnail">
-          <Link to={`/book/:${bookId}`}>
+          <Link to={`/book/:${id}`}>
             <img src={bookCover || IMAGE_NOT_FOUND} alt="Book Cover" />
           </Link>
         </div>
