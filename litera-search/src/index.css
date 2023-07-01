@@ -1,0 +1,11 @@
+@font-face {
+  font-family: copperplate;
+  src: url(assets/fonts/copperplate.otf);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0px;
+  padding: 0px;
+  font-family: Segoe UI Midlevel, Segoe WP, Arial, sans-serif;
+}
