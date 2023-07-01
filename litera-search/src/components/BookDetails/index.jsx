@@ -2,6 +2,7 @@ import React from "react"
 import { useState, useEffect } from "react"
 import { useParams, useNavigate } from "react-router-dom"
 import { BOOK_API_URL } from "constants/index"
+import IMAGE_NOT_FOUND from "assets/images/thumbnail-not-found.png"
 import ErrorBoudary from "components/ErrorBoudary"
 import "./styles.css"
 
@@ -9,8 +10,6 @@ const BookDetails = () => {
   const { id } = useParams()
   const [book, setBook] = useState({})
   const navigate = useNavigate()
-
-  const IMAGE_NOT_FOUND = "/src/assets/images/thumbnail-not-found.png"
 
   useEffect(() => {
     fetch(BOOK_API_URL + "/" + id.slice(1))

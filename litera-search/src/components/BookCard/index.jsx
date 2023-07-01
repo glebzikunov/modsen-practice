@@ -1,5 +1,6 @@
 import React from "react"
 import { Link } from "react-router-dom"
+import IMAGE_NOT_FOUND from "assets/images/thumbnail-not-found.png"
 import "./styles.css"
 
 const BookCard = ({
@@ -9,8 +10,6 @@ const BookCard = ({
   bookTitle,
   bookAuthors,
 }) => {
-  const IMAGE_NOT_FOUND = "/src/assets/images/thumbnail-not-found.png"
-
   return (
     <div className="book-card">
       <div className="book-card-wrapper">
